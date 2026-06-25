@@ -11,10 +11,10 @@ async fn main() {
     fs::create_dir_all("/data").ok();
 
     let app = Router::new()
-        .route(&format!("{}/", base), get(index))
-        .route(&format!("{}/write", base), post(write))
-        .route(&format!("{}/read", base), get(read))
-        .route(&format!("{}/health", base), get(health));
+        .route("/", get(index))
+        .route("/write", post(write))
+        .route("/read", get(read))
+        .route("/health", get(health));
 
     let listener = tokio::net::TcpListener::bind("0.0.0.0:8080").await.unwrap();
     println!("hangar-volume-test listening on :8080");
