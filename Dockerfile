@@ -11,7 +11,7 @@ ARG HANGAR_BASE_PATH
 ARG HANGAR_DEPLOYMENT_ID
 RUN addgroup --system app && adduser --system --ingroup app app
 WORKDIR /app
-COPY --from=builder /app/target/release/hangar-hello-rust .
+COPY --from=builder /app/target/release/hangar-volume-test .
 EXPOSE 8080
 USER app
-CMD ["./hangar-hello-rust"]
+CMD ["./hangar-volume-test"]
