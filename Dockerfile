@@ -9,9 +9,9 @@ RUN touch src/main.rs && cargo build --release
 FROM debian:bookworm-slim
 ARG HANGAR_BASE_PATH
 ARG HANGAR_DEPLOYMENT_ID
-RUN addgroup --system app && adduser --system --ingroup app app
+#RUN addgroup --system app && adduser --system --ingroup app app
 WORKDIR /app
 COPY --from=builder /app/target/release/hangar-volume-test .
 EXPOSE 8080
-USER app
+#USER app
 CMD ["./hangar-volume-test"]
