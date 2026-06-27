@@ -7,8 +7,6 @@ COPY src src
 RUN touch src/main.rs && cargo build --release
 
 FROM debian:bookworm-slim
-ARG HANGAR_BASE_PATH
-ARG HANGAR_DEPLOYMENT_ID
 RUN addgroup --system app && adduser --system --ingroup app app \
     mkdir -p /data && chown app:app /data
 WORKDIR /app
