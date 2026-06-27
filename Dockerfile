@@ -7,7 +7,7 @@ COPY src src
 RUN touch src/main.rs && cargo build --release
 
 FROM debian:bookworm-slim
-RUN addgroup --system app && adduser --system --ingroup app app \
+RUN addgroup --system app && adduser --system --ingroup app app && \
     mkdir -p /data && chown app:app /data
 WORKDIR /app
 COPY --from=builder /app/target/release/hangar-volume-test .
